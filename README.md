@@ -170,6 +170,8 @@ Enjoy :D
 -------------------------------------------------------
 Refs:
 http://willschenk.com/setting-up-devise-with-twitter-and-facebook-and-other-omniauth-schemes-without-email-addresses/
+
 https://www.crondose.com/2016/12/guide-integrating-omniauth-rails-5-facebook-login-feature/
+
 https://github.com/ntamvl/rails5_starter
 
