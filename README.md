@@ -99,7 +99,7 @@ end
 ```
 
 ## Edit user model
-edit `app/models/user.rb` with below content:
+Add to `app/models/user.rb` with below content:
 ```ruby
 def self.new_with_session params, session
   super.tap do |user|
