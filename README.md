@@ -62,16 +62,15 @@ config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH2_APP_ID'], ENV['GOOGLE_OAUTH2_
 config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], { scope: "email" }
 ```
 
-kết nối Devise và Omniauth
-chúng ta truy cập vào đường dẫn model User đã tạo trước đó `app/models/user.rb` thêm vào `:omniauthable, omniauth_providers: [:facebook, :google_oauth2]`
+## Connect Devise with Omniauth
+Add `:omniauthable, omniauth_providers: [:facebook, :google_oauth2]` to `app/models/user.rb`
 ```ruby
 devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 ```
 
-tiếp chúng ta tiến thành tạo controller để xữ lý dữ liệu:
-tạo file `app/controllers/user/omniauth_callbacks_controller.rb`
+Create controller `app/controllers/user/omniauth_callbacks_controller.rb`
 ```ruby
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
