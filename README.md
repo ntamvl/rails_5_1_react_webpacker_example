@@ -119,6 +119,7 @@ def self.from_omniauth(auth)
   where(email: auth.info.email).first_or_initialize.tap do |user|
     user.email = auth.info.email
     user.name = auth.info.name
+    user.password = Devise.friendly_token[0,20]
     user.provider = auth.provider
     user.save!
 
