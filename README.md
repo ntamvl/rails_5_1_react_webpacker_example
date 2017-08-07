@@ -64,6 +64,8 @@ config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], {
 
 ## Connect Devise with Omniauth
 Add `:omniauthable, omniauth_providers: [:facebook, :google_oauth2]` to `app/models/user.rb`
+
+Like this:
 ```ruby
 devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
