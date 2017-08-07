@@ -6,7 +6,7 @@ rails new . --webpack=react --database=postgresql -T
 ```
 
 ## Edit Gemfile
-```
+```ruby
 gem 'dotenv-rails', '2.2.1'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem "devise"
@@ -57,14 +57,14 @@ rails db:migrate
 
 ## Connfig Omniauth
 Edit devise config at `config/initializers/devise.rb`:
-```
+```ruby
 config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH2_APP_ID'], ENV['GOOGLE_OAUTH2_APP_SECRET'], { scope: "email" }
 config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], { scope: "email" }
 ```
 
 kết nối Devise và Omniauth
 chúng ta truy cập vào đường dẫn model User đã tạo trước đó `app/models/user.rb` thêm vào `:omniauthable, omniauth_providers: [:facebook, :google_oauth2]`
-```
+```ruby
 devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
@@ -72,7 +72,7 @@ devise :database_authenticatable, :registerable,
 
 tiếp chúng ta tiến thành tạo controller để xữ lý dữ liệu:
 tạo file `app/controllers/user/omniauth_callbacks_controller.rb`
-```
+```ruby
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     generic_callback("facebook")
@@ -132,7 +132,7 @@ end
 ```
 
 ## Update routes `config/routes`;
-```
+```ruby
 devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 ```
 
